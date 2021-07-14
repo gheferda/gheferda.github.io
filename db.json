@@ -1,0 +1,29 @@
+{
+  "people": [
+    {
+      "name":"Brad Pitt",
+      "age": 23,
+      "gender":"male"
+    },
+    {
+      "name":"Pamela anderson",
+      "age": 30,
+      "gender":"female"
+    },
+    {
+      "name":"Nicolas Cage",
+      "age": 41,
+      "gender":"male"
+    },
+    {
+      "name":"Silver Zoldick",
+      "age": 45,
+      "gender":"male"
+    },
+    {
+      "name":"Killua Zoldick",
+      "age": 18,
+      "gender":"male"
+    }
+  ]
+}

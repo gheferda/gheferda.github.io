@@ -1,0 +1,118 @@
+/*BOOTSTRAP ROOT COLOR*/
+:root {
+	--bs-blue: #0d6efd;
+	--bs-indigo: #6610f2;
+	--bs-purple: #6f42c1;
+	--bs-pink: #d63384;
+	--bs-red: #dc3545;
+	--bs-orange: #fd7e14;
+	--bs-yellow: #ffc107;
+	--bs-green: #198754;
+	--bs-teal: #20c997;
+	--bs-cyan: #0dcaf0;
+	--bs-white: #fff;
+	--bs-gray: #6c757d;
+	--bs-gray-dark: #343a40;
+	--bs-primary: #0d6efd;
+	--bs-secondary: #6c757d;
+	--bs-success: #198754;
+	--bs-info: #0dcaf0;
+	--bs-warning: #ffc107;
+	--bs-danger: #dc3545;
+	--bs-light: #f8f9fa;
+	--bs-dark: #212529;
+}
+* {
+	margin: 0;
+	padding: 0;
+  	box-sizing: border-box;
+}
+body {
+
+}
+.form-control, span, button {
+	height: 40px;
+}
+.form-group #email, .form-group #fullname{
+	height: 25px;
+	background-color: #212529;
+	color: #fff;
+}
+.form-group #textarea {
+	height: 200px;
+	background-color: #212529;
+	color: #fff;
+}
+form button {
+		background-color: red;
+}
+ul li:hover{
+	cursor: pointer;
+}
+ul li {
+	list-style-type: none;
+}
+#footer {
+	background-color: rgb(4, 13, 33)!important;
+	color: #f7f7f7 !important;
+}
+#thumbnail {
+	/*border: 2px solid var(--bs-dark);*/
+	border-radius: 3%;
+	box-shadow: 0 0 50px #ccc;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}
+
+@media (max-width: 639px){
+	#movies {
+		position: relative;
+		top: 50px;
+		width: 380px;
+	}
+}
+
+@media (min-width: 768px){
+	#movies img, #movieDetails img {
+		width: 100%;
+	}
+	#movies .col-md-2 img {
+		min-height: 180px;
+	}
+	#movies .col-md-2 {
+		min-width: 180px;
+		height: 480px;
+	}
+	#movies {
+		position: relative;
+		top: 55px;
+	}
+}
+
+@media (min-width: 1024px){
+
+
+}
+
+@media (min-width: 1200px){
+
+...
+
+}

@@ -61,6 +61,10 @@ ul li {
 	border-radius: 3%;
 	box-shadow: 0 0 50px #ccc;
 }
+.customBtn {
+	width: 120px !important;
+	height: 38px !important;
+}
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 

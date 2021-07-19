@@ -1,25 +1,18 @@
 const myInput = document.querySelector('#myInput');
 const myBtn = document.querySelector('#myBtn');
-//const movie = document.querySelector('#movie');
-//const series = document.querySelector('#series');
-//const episode = document.querySelector('#episode');
-const movieURL = 'https://www.omdbapi.com/?s=iron man&apikey=510257b1';
+const movieURL = 'https://www.omdbapi.com/?s=iron man&apikey=510257b1&';
+
 const movieGENRE ='https://www.omdbapi.com/?apikey=510257b1&s=';
-// tt3896198
-	fetch(`${movieURL}`)
+//tt3896198
+renderHomePage();
+//GET DATA FROM OMDB MOVIE API SITE
+function renderHomePage() {
+  fetch(`${movieURL}`)
 		.then(res => res.json())
 		.then(data => {
 			console.log(data);
-			renderDatas(data);
-		})
-		.catch(error => {
-			console.log('Error:' + error);
-		})
-//GET DATA FROM OMDB MOVIE API SITE
-function renderDatas(data) {
 	let output = '';
 		for(let i=0; i < data.Search.length; i++) {
-
 			output += `
 								<div class="col-md-2 p-3 m-3 text-dark bg-light" id="thumbnail">
 										<h3 class="h5">${data.Search[i].Title}</h3>
@@ -30,14 +23,53 @@ function renderDatas(data) {
 									</div>
 								`
 							}
-		document.querySelector('#movies').innerHTML = output;
-		console.log("totalResults found:",data.totalResults);
-	};
+document.querySelector('#movies').innerHTML = output;
+//console.log("totalResults found:",data.totalResults);
+   })
+		.catch(error => {
+			console.log('Error:' + error);
+		})
+};
+
+//NEXT PAGE BUTTON
+const movieNext = 'https://www.omdbapi.com/?s=iron man&apikey=510257b1&page=';
+const nextBtn = document.querySelector('#nextBtn');
+
+let currentPage = 1;
+let pageArray = [];
+
+nextBtn.addEventListener('click', function(e) {
+ fetch(`${movieNext}`)
+  .then(res => res.json())
+    .then(data => {
+
+        let results = data.Search;
+        let totalPages = data.totalResults;
+        let pageCount = Math.ceil(results.length / totalPages);
+
+        for (i=0; i < pageCount + 1; i++) {
+              pageArray.push(results);
+              console.log(pageArray);
+        }
+
+      //results.forEach(function(item, index){
+        //console.log(index, item);
+        //getMovies(page);
+      //})
+    })
+    .catch(error => {
+      console.log('Error:' + error);
+    })
+
+
+})
+
+function nextPage() {
+}
 
 //search MOVIE API
 myInput.addEventListener('keyup', function(e){
 	let searchInput = myInput.value;
-
 		if (e.keyCode === 13) {
 			e.preventDefault();
 			console.log("you press enter");
@@ -46,53 +78,10 @@ myInput.addEventListener('keyup', function(e){
 });
 myBtn.addEventListener('click', function(e) {
 		let searchInput = myInput.value;
-		getMovies(searchInput);
+	  getMovies(searchInput);
 });
+
 // GENRE BUTTON
-	/*series.addEventListener('click', function(e)
-		 {
-		//alert("series click");
-		let series = "series";
-		fetch(`${movieGENRE}` + series)
-		 .then(res => res.json())
-			.then(data => {
-				console.log(data);
-				getMovies(series);
-			})
-			.catch(error => {
-						console.log('Error:' + error);
-					})
-	})
-	//MOVIE BUTTON
-	movie.addEventListener('click', function(e)
-		 {
-		//alert("movie click");
-		let movie = "movie";
-		fetch(`${movieGENRE}` + movie)
-		 .then(res => res.json())
-			.then(data => {
-				console.log(data);
-				getMovies(movie);
-			})
-			.catch(error => {
-						console.log('Error:' + error);
-					})
-	})
-	//EPISODE BUTTON
-	episode.addEventListener('click', function(e)
-		 {
-		//alert("episode click");
-		let episode = "episode";
-		fetch(`${movieGENRE}` + episode)
-		 .then(res => res.json())
-			.then(data => {
-				console.log(data);
-				getMovies(episode);
-			})
-			.catch(error => {
-						console.log('Error:' + error);
-					})
-	})*/
 const navlink = document.querySelectorAll('.nav-link');
 navlink.forEach(nav => {
 	//console.log(nav);
@@ -119,11 +108,6 @@ function getMovies(searchInput) {
 					let movies = data.Search;
 					let output = '';
 					movies.forEach(movie => {
-					/*let type = movie.Type;
-					let searchInput = myInput.value;
-					if (searchInput === type)	{
-					  console.log(type);
-					}*/
 						output += `
 							<div class="col-md-2 p-3 m-2 bg-light text-dark" id="thumbnail">
 							<div>

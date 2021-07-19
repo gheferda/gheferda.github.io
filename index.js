@@ -12,7 +12,7 @@ function renderHomePage() {
   fetch(`${movieURL}`)
 		.then(res => res.json())
 		.then(data => {
-			console.log(data);
+			//console.log(data);
 	let output = '';
 		for(let i=0; i < data.Search.length; i++) {
 			output += `
@@ -34,6 +34,7 @@ document.querySelector('#movies').innerHTML = output;
 };
 
 //NEXT PAGE BUTTON
+
 // const movieNext = 'https://www.omdbapi.com/?s=iron man&apikey=510257b1&page=';
 // const nextBtn = document.querySelector('#nextBtn');
 
@@ -67,6 +68,91 @@ document.querySelector('#movies').innerHTML = output;
 // })
 
 // function nextPage() {
+// }
+
+// const movieNext = 'https://www.omdbapi.com/?s=iron man&apikey=510257b1&page=';
+// const nextBtn = document.querySelector('#nextBtn');
+// const previousBtn = document.querySelector('#previousBtn');
+
+// let currentPage = 2;
+// let pageArray = [];
+
+// nextBtn.addEventListener('click', function(e) {
+//     nextPage();
+// })
+// previousBtn.addEventListener('click', function(e) {
+//     previousPage();
+// })
+
+// function nextPage() {
+//   fetch(`${movieNext}`+ currentPage)
+//    .then(res => res.json())
+//      .then(data => {
+//          let movies = data.Search;
+//          let totalPages = data.totalResults;
+//          let pageCount = Math.ceil(movies.length / totalPages);
+//          let output = '';
+
+//          if (movies.length < totalPages) {
+//              console.log("currentPage", currentPage);
+//            }
+
+//            currentPage = currentPage + 1;
+//            movies.forEach(function(movie, index){
+//                console.log(index, movie);
+//             output += `
+//                  <div class="col-md-2 p-3 m-2 bg-light text-dark" id="thumbnail">
+//                  <div>
+//                    <h3 class="h5">${movie.Title}</h3>
+//                    <img src="${movie.Poster}"/>
+//                    <p>Year: ${movie.Year}</p>
+//                    <p>Type: ${movie.Type}</p>
+//                    <a onclick="movieSelected('${movie.imdbID}')" href="#" class="btn btn-success">movie details</a>
+//                    </div>
+//                  </div>
+//                  `
+//            })
+//             document.querySelector('#movies').innerHTML = output;
+//      })
+//      .catch(error => {
+//        console.log('Error:' + error);
+//      })
+
+// }
+
+// function previousPage() {
+//   fetch(`${movieNext}`+ currentPage)
+//    .then(res => res.json())
+//      .then(data => {
+//          let movies = data.Search;
+//          let totalPages = data.totalResults;
+//          let pageCount = Math.ceil(movies.length / totalPages);
+//          let output = '';
+
+//          if (movies.length < totalPages) {
+//              console.log("currentPage", currentPage);
+//            }
+
+//            currentPage = currentPage - 1;
+//            movies.forEach(function(movie, index){
+//                console.log(index, movie);
+//             output += `
+//                  <div class="col-md-2 p-3 m-2 bg-light text-dark" id="thumbnail">
+//                  <div>
+//                    <h3 class="h5">${movie.Title}</h3>
+//                    <img src="${movie.Poster}"/>
+//                    <p>Year: ${movie.Year}</p>
+//                    <p>Type: ${movie.Type}</p>
+//                    <a onclick="movieSelected('${movie.imdbID}')" href="#" class="btn btn-success">movie details</a>
+//                    </div>
+//                  </div>
+//                  `
+//            })
+//             document.querySelector('#movies').innerHTML = output;
+//      })
+//      .catch(error => {
+//        console.log('Error:' + error);
+//      })
 // }
 
 //search MOVIE API

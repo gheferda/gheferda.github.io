@@ -1,141 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>Movie App</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/styles.css">
-<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
-<body>
-
-  <div class="container-fluid">
-    <div class="row">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><img src="images/movie-projector.png" width="30" height="30" class="d-inline-block align-top" alt="">
-             MovieBox</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                  <a class="nav-link" id="" aria-current="page" href="#">Movie</a>
-              </li>
-              <li class="nav-item">
+  <title>Movie App</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="index.html"
+              ><img
+                src="images/movie-projector.png"
+                width="30"
+                height="30"
+                class="d-inline-block align-top"
+                alt=""
+              />
+              MovieBox</a
+            >
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarTogglerDemo02"
+              aria-controls="navbarTogglerDemo02"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" id="" aria-current="page" href="#"
+                    >Movie</a
+                  >
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" id="" href="#">Series</a>
-              </li>
-              <li class="nav-item">
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" id="" href="#">Episode</a>
-              </li>
-              <li class="nav-item">
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" id="" href="#">Tagalog</a>
-              </li>
-              <li class="nav-item">
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" id="" href="#">English</a>
-              </li>
-            </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" id="myInput" type="text" placeholder="Search here..." aria-label="Search">
-              <button class="btn btn-outline-success" id="myBtn" type="button">Search</button>
-            </form>
+                </li>
+              </ul>
+              <form class="d-flex">
+                <input
+                  class="form-control me-2"
+                  id="myInput"
+                  type="text"
+                  placeholder="Search here..."
+                  aria-label="Search"
+                />
+                <button
+                  class="btn btn-outline-success"
+                  id="myBtn"
+                  type="button"
+                >
+                  Search
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
-      </nav>
-    </div><!--end of row-->
-  </div>
 
-      <div class="container d-flex justify-content-center mt-2">
-        <button class="btn btn-success col-md-2 m-2 customBtn" id="previousBtn">PreviousPage</button>
-        <button class="btn btn-success col-md-2 m-2 customBtn" id="nextBtn">NextPage</button>
+        </nav>
       </div>
+      <!--end of row-->
+    </div>
 
+    <div class="container text-center justify-content-center mt-2">
+      <button class="btn btn-success col-md-2 m-2 customBtn" id="prevBtn">PrevPage</button>
+      <button class="btn btn-success col-md-2 m-2 customBtn" id="nextBtn">NextPage</button>
+    </div>
 
     <div class="container d-flex justify-content-center">
-      <div id="movies" class="row text-center justify-content-center">
+      <div id="movies" class="row text-center justify-content-center"></div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row align-items-center text-center m-5">
+        <div class="col-sm-3">
+          <p>Get update regularly for new movie</p>
+        </div>
+        <div class="col input-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Your Email Here..."
+            aria-label="Your Email Here..."
+            aria-describedby="basic-addon2"
+          />
+          <span
+            ><button class="btn btn-primary" type="button">
+              Subscribe
+            </button></span
+          >
+        </div>
+        <div class="col-sm-3 mt-3">
+          <p>
+            By clicking the button you agree to the Privacy Policy and Terms and
+            Conditions
+          </p>
+        </div>
       </div>
     </div>
 
-  <div class="container-fluid">
-    <div class="row align-items-center text-center m-5">
-      <div class="col-sm-3">
-        <p>Get update regularly for new movie</p>
-      </div>
-      <div class="col input-group">
-          <input type="text" class="form-control" placeholder="Your Email Here..." aria-label="Your Email Here..." aria-describedby="basic-addon2">
-          <span><button class="btn btn-primary" type="button">Subscribe</button></span>
-      </div>
-      <div class="col-sm-3 mt-3">
-          <p>By clicking the button you agree to the Privacy Policy and Terms and Conditions</p>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="container-fluid text-light bg-dark">
-    <div class="row text-center">
-      <div class="col-sm-4 mt-5">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <p>Genre</p>
-          <li class="nav-item mb-4">
-              <a class="nav-link text-muted" id="" aria-current="page" href="#">Movie</a>
-          </li>
-          <li class="nav-item mb-4">
+    <div class="container-fluid text-light bg-dark">
+      <div class="row text-center">
+        <div class="col-sm-4 mt-5">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <p>Genre</p>
+            <li class="nav-item mb-4">
+              <a class="nav-link text-muted" id="" aria-current="page" href="#"
+                >Movie</a
+              >
+            </li>
+            <li class="nav-item mb-4">
               <a class="nav-link text-muted" id="" href="#">Series</a>
-          </li>
-          <li class="nav-item mb-4">
+            </li>
+            <li class="nav-item mb-4">
               <a class="nav-link text-muted" id="" href="#">Episode</a>
-          </li>
-          <li class="nav-item mb-4">
+            </li>
+            <li class="nav-item mb-4">
               <a class="nav-link text-muted" id="" href="#">Tagalog</a>
-          </li>
-          <li class="nav-item mb-4">
+            </li>
+            <li class="nav-item mb-4">
               <a class="nav-link text-muted" id="" href="#">English</a>
-          </li>
-        </ul>
-
-      </div>
-      <div class="col-sm-4 text-center mt-5">
-        <div class="row">
-          <p>Follow Us</p>
-          <div class="container d-flex justify-content-center">
-          <a href="#"><img src="logos/icons8-facebook-30.png" width="30" height="30" alt=""></a>
-          <a href="#"><img src="logos/icons8-twitter-squared-30.png" width="30" height="30" alt=""></a>
-          <a href="#"><img src="logos/icons8-instagram-30.png" width="30" height="30" alt=""></a>
-          <a href="#"><img src="logos/icons8-tiktok-30.png" width="30" height="30" alt=""></a>
+            </li>
+          </ul>
         </div>
+        <div class="col-sm-4 text-center mt-5">
+          <div class="row">
+            <p>Follow Us</p>
+            <div class="container d-flex justify-content-center">
+              <a href="#"
+                ><img
+                  src="logos/icons8-facebook-30.png"
+                  width="30"
+                  height="30"
+                  alt=""
+              /></a>
+              <a href="#"
+                ><img
+                  src="logos/icons8-twitter-squared-30.png"
+                  width="30"
+                  height="30"
+                  alt=""
+              /></a>
+              <a href="#"
+                ><img
+                  src="logos/icons8-instagram-30.png"
+                  width="30"
+                  height="30"
+                  alt=""
+              /></a>
+              <a href="#"
+                ><img
+                  src="logos/icons8-tiktok-30.png"
+                  width="30"
+                  height="30"
+                  alt=""
+              /></a>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="col-sm-4 mt-5 footer">
+        <div class="col-sm-4 mt-5 footer">
           <p>Contact Us</p>
           <form action="#">
             <div class="form-group text-muted">
               <label for="email">Email address</label>
-              <input type="email" class="form-control border-0 border-bottom border-success" id="email">
+              <input
+                type="email"
+                class="form-control border-0 border-bottom border-success"
+                id="email"
+              />
             </div>
             <div class="form-group text-muted">
               <label for="fullname">Full name</label>
-              <input type="text" class="form-control border-0 border-bottom border-success" id="fullname">
+              <input
+                type="text"
+                class="form-control border-0 border-bottom border-success"
+                id="fullname"
+              />
             </div>
             <div class="form-group text-muted">
               <label for="suggestion">Suggestion</label>
-              <textarea type="text" class="form-control border-0 border-bottom border-success" id="textarea"> </textarea>
+              <textarea
+                type="text"
+                class="form-control border-0 border-bottom border-success"
+                id="textarea"
+              >
+              </textarea>
             </div>
-            <button type="submit" class="btn btn-outline-success mt-3">Submit</button>
-        </form>
+            <button type="submit" class="btn btn-outline-success mt-3">
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="container-fluid text-light bg-dark text-muted text-center">
+    <div class="container-fluid text-light bg-dark text-muted text-center">
       <p>Alrights Reserved 2021. Created By: Aspiring Web Develepor</p>
       <p></p>
-  </div>
+    </div>
 
-
-  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>-->
-  <script src="bootstrap/jquery/jquery-3.6.0.min.js"></script>
-  <script src="bootstrap/js/bootstrap.min.js"></script>
-  <script src="index.js"></script>
-</body>
+    <script src="bootstrap/jquery/jquery-3.6.0.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="index.js"></script>
+    <script src="pagination.js"></script>
+  </body>
+</html>

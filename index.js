@@ -1,6 +1,8 @@
 const myInput = document.querySelector('#myInput');
 const myBtn = document.querySelector('#myBtn');
-const movieURL = 'https://www.omdbapi.com/?s=iron man&apikey=510257b1&';
+const movieURL = 'https://www.omdbapi.com/?apikey=510257b1&s=iron man&';
+
+
 
 const movieGENRE ='https://www.omdbapi.com/?apikey=510257b1&s=';
 //tt3896198
@@ -32,40 +34,40 @@ document.querySelector('#movies').innerHTML = output;
 };
 
 //NEXT PAGE BUTTON
-const movieNext = 'https://www.omdbapi.com/?s=iron man&apikey=510257b1&page=';
-const nextBtn = document.querySelector('#nextBtn');
+// const movieNext = 'https://www.omdbapi.com/?s=iron man&apikey=510257b1&page=';
+// const nextBtn = document.querySelector('#nextBtn');
 
-let currentPage = 1;
-let pageArray = [];
+// let currentPage = 1;
+// let pageArray = [];
 
-nextBtn.addEventListener('click', function(e) {
- fetch(`${movieNext}`)
-  .then(res => res.json())
-    .then(data => {
+// nextBtn.addEventListener('click', function(e) {
+//  fetch(`${movieNext}`)
+//   .then(res => res.json())
+//     .then(data => {
 
-        let results = data.Search;
-        let totalPages = data.totalResults;
-        let pageCount = Math.ceil(results.length / totalPages);
+//         let results = data.Search;
+//         let totalPages = data.totalResults;
+//         let pageCount = Math.ceil(results.length / totalPages);
 
-        for (i=0; i < pageCount + 1; i++) {
-              pageArray.push(results);
-              console.log(pageArray);
-        }
+//         for (i=0; i < pageCount + 1; i++) {
+//               pageArray.push(results);
+//               console.log(pageArray);
+//         }
 
-      //results.forEach(function(item, index){
-        //console.log(index, item);
-        //getMovies(page);
-      //})
-    })
-    .catch(error => {
-      console.log('Error:' + error);
-    })
+//       //results.forEach(function(item, index){
+//         //console.log(index, item);
+//         //getMovies(page);
+//       //})
+//     })
+//     .catch(error => {
+//       console.log('Error:' + error);
+//     })
 
 
-})
+// })
 
-function nextPage() {
-}
+// function nextPage() {
+// }
 
 //search MOVIE API
 myInput.addEventListener('keyup', function(e){

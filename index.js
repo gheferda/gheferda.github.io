@@ -1,219 +1,96 @@
+//tt3896198
 const myInput = document.querySelector('#myInput');
 const myBtn = document.querySelector('#myBtn');
-const movieURL = 'https://www.omdbapi.com/?apikey=510257b1&s=iron man&';
+let myMovies = document.querySelector('#movies');
+let myPrevButton = document.querySelector('#prevBtn');
+let myNextButton = document.querySelector('#nextBtn');
 
+let currentPage = 1;
+let searchMovieName = 'iron man';
+let total_page;
 
+getGenre();
+getMoviesPerPage(searchMovieName, currentPage);
 
-const movieGENRE ='https://www.omdbapi.com/?apikey=510257b1&s=';
-//tt3896198
-renderHomePage();
-//GET DATA FROM OMDB MOVIE API SITE
-function renderHomePage() {
-  fetch(`${movieURL}`)
+function getMoviesPerPage(search,page){
+    /**
+     * bali paginated na pala nirereturn ni omdb api so need mo nalang ipasa ung page na parameters sa url para makuha ung next page na data galing sa omdb api.
+     * hindi pa paginated yung iba mong page. mo nalang siguro d2.
+     */
+	const movieURL = `https://www.omdbapi.com/?apikey=510257b1&s=${search}&page=${page}`;
+
+	fetch(movieURL)
 		.then(res => res.json())
 		.then(data => {
-			//console.log(data);
-	let output = '';
-		for(let i=0; i < data.Search.length; i++) {
-			output += `
-								<div class="col-md-2 p-3 m-3 text-dark bg-light" id="thumbnail">
-										<h3 class="h5">${data.Search[i].Title}</h3>
-										<img src="${data.Search[i].Poster}"/>
-										<p>Year: ${data.Search[i].Year}</p>
-										<p>Type: ${data.Search[i].Type}</p>
-										<a onclick="movieSelected('${data.Search[i].imdbID}')" href="#" class="btn btn-success">movie details</a>
-									</div>
-								`
-							}
-document.querySelector('#movies').innerHTML = output;
-//console.log("totalResults found:",data.totalResults);
-   })
-		.catch(error => {
-			console.log('Error:' + error);
-		})
-};
+            total_page = Math.ceil(data.totalResults / 10); // to get the last page number
+            currentPage = page; // to update the current page number
+            myMovies.innerHTML = ''; // to refresh the display
+            updateBtn(page);
+            // displaying new data from omdb api site
+            for(movie of data.Search){
+                myMovies.innerHTML +=  `
+                    <div class="col-md-2 p-3 m-3 text-dark bg-light" id="thumbnail">
+                        <h3 class="h5">${movie.Title}</h3>
+                        <img src="${movie.Poster}"/>
+                        <p>Year: ${movie.Year}</p>
+                        <p>Type: ${movie.Type}</p>
+                        <a onclick="movieSelected('${movie.imdbID}')" href="#" class="btn btn-success">movie details</a>
+                    </div>
+                `
+            }
+		});
+}
+// add and minus lng sa current page
+myPrevButton.onclick = () => {
+    getMoviesPerPage(searchMovieName, currentPage - 1);
+}
 
-//NEXT PAGE BUTTON
+myNextButton.onclick = () => {
+    getMoviesPerPage(searchMovieName, currentPage + 1);
+}
 
-// const movieNext = 'https://www.omdbapi.com/?s=iron man&apikey=510257b1&page=';
-// const nextBtn = document.querySelector('#nextBtn');
-
-// let currentPage = 1;
-// let pageArray = [];
-
-// nextBtn.addEventListener('click', function(e) {
-//  fetch(`${movieNext}`)
-//   .then(res => res.json())
-//     .then(data => {
-
-//         let results = data.Search;
-//         let totalPages = data.totalResults;
-//         let pageCount = Math.ceil(results.length / totalPages);
-
-//         for (i=0; i < pageCount + 1; i++) {
-//               pageArray.push(results);
-//               console.log(pageArray);
-//         }
-
-//       //results.forEach(function(item, index){
-//         //console.log(index, item);
-//         //getMovies(page);
-//       //})
-//     })
-//     .catch(error => {
-//       console.log('Error:' + error);
-//     })
-
-
-// })
-
-// function nextPage() {
-// }
-
-// const movieNext = 'https://www.omdbapi.com/?s=iron man&apikey=510257b1&page=';
-// const nextBtn = document.querySelector('#nextBtn');
-// const previousBtn = document.querySelector('#previousBtn');
-
-// let currentPage = 2;
-// let pageArray = [];
-
-// nextBtn.addEventListener('click', function(e) {
-//     nextPage();
-// })
-// previousBtn.addEventListener('click', function(e) {
-//     previousPage();
-// })
-
-// function nextPage() {
-//   fetch(`${movieNext}`+ currentPage)
-//    .then(res => res.json())
-//      .then(data => {
-//          let movies = data.Search;
-//          let totalPages = data.totalResults;
-//          let pageCount = Math.ceil(movies.length / totalPages);
-//          let output = '';
-
-//          if (movies.length < totalPages) {
-//              console.log("currentPage", currentPage);
-//            }
-
-//            currentPage = currentPage + 1;
-//            movies.forEach(function(movie, index){
-//                console.log(index, movie);
-//             output += `
-//                  <div class="col-md-2 p-3 m-2 bg-light text-dark" id="thumbnail">
-//                  <div>
-//                    <h3 class="h5">${movie.Title}</h3>
-//                    <img src="${movie.Poster}"/>
-//                    <p>Year: ${movie.Year}</p>
-//                    <p>Type: ${movie.Type}</p>
-//                    <a onclick="movieSelected('${movie.imdbID}')" href="#" class="btn btn-success">movie details</a>
-//                    </div>
-//                  </div>
-//                  `
-//            })
-//             document.querySelector('#movies').innerHTML = output;
-//      })
-//      .catch(error => {
-//        console.log('Error:' + error);
-//      })
-
-// }
-
-// function previousPage() {
-//   fetch(`${movieNext}`+ currentPage)
-//    .then(res => res.json())
-//      .then(data => {
-//          let movies = data.Search;
-//          let totalPages = data.totalResults;
-//          let pageCount = Math.ceil(movies.length / totalPages);
-//          let output = '';
-
-//          if (movies.length < totalPages) {
-//              console.log("currentPage", currentPage);
-//            }
-
-//            currentPage = currentPage - 1;
-//            movies.forEach(function(movie, index){
-//                console.log(index, movie);
-//             output += `
-//                  <div class="col-md-2 p-3 m-2 bg-light text-dark" id="thumbnail">
-//                  <div>
-//                    <h3 class="h5">${movie.Title}</h3>
-//                    <img src="${movie.Poster}"/>
-//                    <p>Year: ${movie.Year}</p>
-//                    <p>Type: ${movie.Type}</p>
-//                    <a onclick="movieSelected('${movie.imdbID}')" href="#" class="btn btn-success">movie details</a>
-//                    </div>
-//                  </div>
-//                  `
-//            })
-//             document.querySelector('#movies').innerHTML = output;
-//      })
-//      .catch(error => {
-//        console.log('Error:' + error);
-//      })
-// }
+//preventing bug sa pag get and sa ui/ux na din.
+myPrevButton.classList.add('disabled');
+function updateBtn(page){
+    console.log(currentPage,page,total_page);
+    if(page == 1){
+        myPrevButton.classList.add('disabled');
+    }
+    else if(page == total_page){
+        myNextButton.classList.add('disabled');
+    }
+    else{
+        myPrevButton.classList.remove('disabled');
+        myNextButton.classList.remove('disabled');
+    }
+}
 
 //search MOVIE API
 myInput.addEventListener('keyup', function(e){
-	let searchInput = myInput.value;
+  e.preventDefault();
+     let searchInput = myInput.value;
 		if (e.keyCode === 13) {
-			e.preventDefault();
+
 			console.log("you press enter");
 		}
-			getMovies(searchInput);
+      getMoviesPerPage(searchInput);
 });
 myBtn.addEventListener('click', function(e) {
-		let searchInput = myInput.value;
-	  getMovies(searchInput);
+      let searchInput = myInput.value;
+      getMoviesPerPage(searchInput);
 });
 
 // GENRE BUTTON
+function getGenre() {
 const navlink = document.querySelectorAll('.nav-link');
-navlink.forEach(nav => {
-	//console.log(nav);
-	nav.addEventListener('click', function(e) {
-				//console.log(nav);
-				let genreclick = nav.innerHTML;
-				fetch(`${movieGENRE}` + genreclick)
-				 .then(res => res.json())
-					.then(data => {
-						console.log(data);
-						getMovies(genreclick);
-					})
-					.catch(error => {
-								console.log('Error:' + error);
-							})
-			})
-})
 
-function getMovies(searchInput) {
-		//console.log(searchInput);
-		fetch('https://www.omdbapi.com/?apikey=510257b1&s=' + searchInput)
-			.then(res => res.json())
-				.then(data => {
-					let movies = data.Search;
-					let output = '';
-					movies.forEach(movie => {
-						output += `
-							<div class="col-md-2 p-3 m-2 bg-light text-dark" id="thumbnail">
-							<div>
-								<h3 class="h5">${movie.Title}</h3>
-								<img src="${movie.Poster}"/>
-								<p>Year: ${movie.Year}</p>
-								<p>Type: ${movie.Type}</p>
-								<a onclick="movieSelected('${movie.imdbID}')" href="#" class="btn btn-success">movie details</a>
-								</div>
-							</div>
-											`
-								})
-					document.querySelector('#movies').innerHTML = output;
-				})
-				.catch(error => {
-					console.log('Error:' + error);
-				})
-};
+    navlink.forEach(nav => {
+    	nav.addEventListener('click', function(e) {
+    				let genreclick = nav.innerHTML;
+              getMoviesPerPage(genreclick, currentPage);
+    			  })
+        })
+}
 
 function movieSelected(id) {
 	sessionStorage.setItem('movieId', id);
@@ -229,7 +106,6 @@ function getMovie() {
 				let movieDetails = data;
 				console.log(movieDetails);
 				let output = '';
-
 				output += `
 			<div class="container bg-light text-dark text-center" id="thumbnail">
 				<div class="row" id="thumbnail">

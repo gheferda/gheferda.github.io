@@ -17,6 +17,7 @@ function getMoviesPerPage(search,page){
      * bali paginated na pala nirereturn ni omdb api so need mo nalang ipasa ung page na parameters sa url para makuha ung next page na data galing sa omdb api.
      * hindi pa paginated yung iba mong page. mo nalang siguro d2.
      */
+
 	const movieURL = `https://www.omdbapi.com/?apikey=510257b1&s=${search}&page=${page}`;
 
 	fetch(movieURL)
@@ -73,23 +74,26 @@ myInput.addEventListener('keyup', function(e){
 
 			console.log("you press enter");
 		}
-      getMoviesPerPage(searchInput);
+	  searchMovieName = searchInput;
+      getMoviesPerPage(searchInput, currentPage);
 });
 myBtn.addEventListener('click', function(e) {
       let searchInput = myInput.value;
-      getMoviesPerPage(searchInput);
+	  searchMovieName = searchInput;
+      getMoviesPerPage(searchInput, currentPage);
 });
 
 // GENRE BUTTON
 function getGenre() {
-const navlink = document.querySelectorAll('.nav-link');
+	const navlink = document.querySelectorAll('.nav-link');
 
     navlink.forEach(nav => {
     	nav.addEventListener('click', function(e) {
-    				let genreclick = nav.innerHTML;
+    		  let genreclick = nav.innerHTML;
+			  searchMovieName = genreclick;
               getMoviesPerPage(genreclick, currentPage);
-    			  })
-        })
+    	})
+    })
 }
 
 function movieSelected(id) {

@@ -33,9 +33,6 @@ body {
 nav {
 	z-index: 1;
 }
-#paginationBtn {
-
-}
 .form-control, span, button {
 	height: 40px;
 }
@@ -70,6 +67,9 @@ ul li {
 .customBtn {
 	width: 120px !important;
 	height: 38px !important;
+}
+.customBtnSubscribe {
+	z-index: -1 !important;
 }
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {

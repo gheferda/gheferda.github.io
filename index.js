@@ -6,7 +6,7 @@ let myPrevButton = document.querySelector('#prevBtn');
 let myNextButton = document.querySelector('#nextBtn');
 
 let currentPage = 1;
-let searchMovieName = 'iron man';
+let searchMovieName = 'transformers';
 let total_page;
 
 getGenre();
@@ -17,9 +17,7 @@ function getMoviesPerPage(search,page){
      * bali paginated na pala nirereturn ni omdb api so need mo nalang ipasa ung page na parameters sa url para makuha ung next page na data galing sa omdb api.
      * hindi pa paginated yung iba mong page. mo nalang siguro d2.
      */
-
 	const movieURL = `https://www.omdbapi.com/?apikey=510257b1&s=${search}&page=${page}`;
-
 	fetch(movieURL)
 		.then(res => res.json())
 		.then(data => {
@@ -30,7 +28,7 @@ function getMoviesPerPage(search,page){
             // displaying new data from omdb api site
             for(movie of data.Search){
                 myMovies.innerHTML +=  `
-                    <div class="col-md-2 p-3 m-3 text-dark bg-light" id="thumbnail">
+                    <div class="col-md-2 p-3 m-3 mb-5 text-dark bg-light" id="thumbnail">
                         <h3 class="h5">${movie.Title}</h3>
                         <img src="${movie.Poster}"/>
                         <p>Year: ${movie.Year}</p>
@@ -86,7 +84,6 @@ myBtn.addEventListener('click', function(e) {
 // GENRE BUTTON
 function getGenre() {
 	const navlink = document.querySelectorAll('.nav-link');
-
     navlink.forEach(nav => {
     	nav.addEventListener('click', function(e) {
     		  let genreclick = nav.innerHTML;
